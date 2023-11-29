@@ -1,18 +1,15 @@
+
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { OpenAI, } from 'openai';
+import OpenAI from 'openai';
 import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
-
 
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
-
-const instructionMessage: OpenAI.Chat.ChatCompletionMessageParam = {
-    role: "system",
-    content: "You are a code generator. You must answer only in markdown code snippets. Use code comments for explanations"
-}
+console.log(openai)
+//const openai = new OpenAIApi(configuration);
 
 export async function POST(
     req: Request
@@ -20,8 +17,7 @@ export async function POST(
     try {
         const { userId } = auth();
         const body = await req.json()
-        const { messages } = body;
-        console.log(messages)
+        const { prompt, amount = 1, resolution = "512x512" } = body;
 
         if (!userId) {
             return new NextResponse("Unauthorized", { status: 401 });
@@ -31,8 +27,14 @@ export async function POST(
             return new NextResponse("OpenAI API Key not configure", { status: 500 });
         }
 
-        if (!messages) {
-            return new NextResponse("Message are required", { status: 400 });
+        if (!prompt) {
+            return new NextResponse("Promt are required", { status: 400 });
+        }
+        if (!amount) {
+            return new NextResponse("Promt are required", { status: 400 });
+        }
+        if (!resolution) {
+            return new NextResponse("Promt are required", { status: 400 });
         }
 
         const freeTrial = await checkApiLimit();
@@ -41,16 +43,18 @@ export async function POST(
             return new NextResponse("Free trial has expired.", { status: 403 });
         }
 
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
-            messages: [instructionMessage, ...messages]
+        const response = await openai.images.generate({
+            model: "dall-e-3",
+            prompt: prompt,
+            //n: parseInt(amount,10),
+            //size: resolution,
         });
 
         await increaseApiLimit();
 
-        return NextResponse.json(response.choices[0].message)
+        return NextResponse.json(response.data)
     } catch (error) {
-        console.log("[CONVERSATION_ERROR]", error);
+        console.log("[Image_ERROR]", error);
         return new NextResponse("Internal error", { status: 500 });
     }
 }
