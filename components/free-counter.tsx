@@ -8,13 +8,14 @@ import { Progress } from "@/components/ui/progress";
 import { useProModal } from "@/hooks/use-pro-modal";
 //import { useProModal } from "@/hooks/use-pro-modal";
 
+interface FreeCounterProps {
+  apiLimitCount: number;
+  isPro: boolean;
+}
 export const FreeCounter = ({
   isPro = false,
   apiLimitCount = 0,
-}: {
-  isPro: boolean,
-  apiLimitCount: number
-}) => {
+}: FreeCounterProps) => {
   const [mounted, setMounted] = useState(false);
   const proModal = useProModal();
 
