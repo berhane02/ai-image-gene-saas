@@ -43,9 +43,9 @@ const routes = [
     color: "text-green-700",
   },
   {
-    label: "Setting",
+    label: "Settings",
     icon: Settings,
-    href: "/setting",
+    href: "/settings",
     color: "text-green-700",
   },
 ];

@@ -3,7 +3,7 @@
 import { Empty } from "@/components/empty";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Heading } from "@/components/Heading";
+import { Heading } from "@/components/heading";
 import { Loader } from "@/components/loader";
 
 import axios from "axios";
@@ -38,7 +38,6 @@ const VideoPage = () => {
     try {
       setVideo(undefined);
       const response = await axios.post("/api/video", values);
-      console.log(response.data[0])
       setVideo(response.data[0]);
       form.reset();
     } catch (error: any) {

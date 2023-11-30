@@ -19,7 +19,6 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { tools } from "@/constants";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { inter } from 'next/font/google'
 
 export const ProModal = () => {
   const proModal = useProModal();
@@ -28,11 +27,7 @@ export const ProModal = () => {
   const onSubscribe = async () => {
     try {
       setLoading(true);
-      console.log("this is the path")
-      //const response = await axios.get("/api/code");
       const response = await axios.get("api/stripe");
-      //const test = await axios.get("/api/stripe");
-      console.log("test test")
 
       window.location.href = response.data.url;
     } catch (error) {
