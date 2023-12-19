@@ -7,7 +7,6 @@ import { absoluteUrl } from "@/lib/utils"
 
 
 const settingsUrl = absoluteUrl("/settings");
-console.log("this the the right page")
 
 export async function GET() {
     try {

@@ -5,31 +5,26 @@ import { PlayCircle } from "lucide-react";
 export const LandingContent = () => {
   const testimonials = [
     {
-      name: "Yemane",
-      avatar: "B",
+      name: "Luciy",
+      avatar: "Y",
       title: "Software Engineer",
       description: "This is the best application I've used for generative ai",
     },{
-        name: "Yemane",
-        avatar: "B",
-        title: "Software Engineer",
-        description: "This is the best application I've used for generative ai",
+        name: "John",
+        avatar: "J",
+        title: "DevOps Engineer",
+        description: "I like it how I can promt from one endpoint",
       },{
         name: "Yemane",
-        avatar: "B",
-        title: "Software Engineer",
-        description: "This is the best application I've used for generative ai",
+        avatar: "Y",
+        title: "FullStack Engineer",
+        description: "This application is help speed up my development",
       },{
-        name: "Yemane",
-        avatar: "B",
+        name: "Nasa",
+        avatar: "N",
         title: "Software Engineer",
-        description: "This is the best application I've used for generative ai",
-      },{
-        name: "Yemane",
-        avatar: "B",
-        title: "Software Engineer",
-        description: "This is the best application I've used for generative ai",
-      },
+        description: "It was fun generation solary system pic",
+      }
   ];
   return (
     <div className="px-10 pb-20">

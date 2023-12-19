@@ -9,7 +9,6 @@ import { checkSubscription } from "@/lib/subscription";
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
-console.log(openai)
 //const openai = new OpenAIApi(configuration);
 
 export async function POST(
