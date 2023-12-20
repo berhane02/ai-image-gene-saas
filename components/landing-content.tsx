@@ -23,7 +23,7 @@ export const LandingContent = () => {
         name: "Nasa",
         avatar: "N",
         title: "Software Engineer",
-        description: "It was fun generation solary system pic",
+        description: "It was fun generation solar system pic",
       }
   ];
   return (
