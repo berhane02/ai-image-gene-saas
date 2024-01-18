@@ -41,7 +41,7 @@ const tools = [
     href: "/video",
   },
   {
-    label: "Image Generation",
+    label: "Code Generation",
     icon: Code,
     color: "text-green-700",
     bgColor: "bg-green-700/10",
