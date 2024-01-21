@@ -1,19 +1,14 @@
 /** @type {import('next').NextConfig} */
-/*const nextConfig = {
-    images: {
-        domains: [
-            "oaidalleapiprodscus.blob.core.windows.net"
-        ]
-    }
-}*/
-
-
-module.exports =  {
+const nextConfig = {
   images: {
-    domains: [
-        "oaidalleapiprodscus.blob.core.windows.net"
-    ]
-},
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "oaidalleapiprodscus.blob.core.windows.net",
+      },
+    ],
+  },
+  
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -21,4 +16,6 @@ module.exports =  {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-}
+};
+
+module.exports = nextConfig;
