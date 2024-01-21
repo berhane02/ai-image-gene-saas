@@ -17,6 +17,7 @@ export const SubscriptionButton = ({
   const onClick = async () => {
     try {
         setLoading(true);
+        
       const response = await axios.get("/api/stripe");
 
       window.location.href = response.data.url;
